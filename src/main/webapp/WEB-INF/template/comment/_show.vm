@@ -1,0 +1,29 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				$!comment.userName#if($!comment.replyUserName) 回复 $!comment.replyUserName#end（$dateTool.format('yyyy年MM月dd日',$comment.updateTime)）：
+				#if($isAdmin)
+				<div class="btn-group pull-right">
+  					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    					<span class="caret"></span>
+  					</button>
+  					<ul class="dropdown-menu">
+  						#if($!comment.userName!="admin")
+  						<li><a class="replyComment" replyCommentId="$!comment.id" href="#">回复</a></li>
+  						#end
+  						<li><a class="deleteComment" href="/post/$post.id/comment/$!comment.id">删除</a></li>
+  					</ul>
+				</div>
+				#end
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<div>$!comment.content</div>
+			</td>
+		</tr>
+	</tbody>
+</table>

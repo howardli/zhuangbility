@@ -1,0 +1,4 @@
+<form action="/post/$!postId" method="post" class="form-horizontal">
+	<input type="hidden" name="_method" value="put" />
+	#parse("post/_form.vm")
+</form>

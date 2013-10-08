@@ -1,0 +1,24 @@
+<div class="page-header">
+	<h1>
+		<a href="/post/$post.id">$!post.title</a>
+	</h1>
+	$dateTool.format('yyyy年MM月dd日',$post.updateTime)
+	评论（<a href="/post/$post.id#comment">$post.commentCount</a>）
+	标签：
+	#foreach($postTag in $post.postTags)
+		#set($tagName=$postTag.id.tag.name)
+		<a class="btn btn-default" href="/tag/$!tagName">$!tagName</a>
+	#end
+	#if($isAdmin)
+	<div class="btn-group pull-right">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="/post/$post.id/edit">编辑</a></li>
+			<li><a id="deletePost$post.id" href="#">删除</a></li>
+		</ul>
+	</div>
+	#end
+</div>
+<div class="content">$!post.content</div>

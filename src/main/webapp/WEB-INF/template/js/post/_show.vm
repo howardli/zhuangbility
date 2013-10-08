@@ -1,0 +1,28 @@
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		var converter = new Showdown.converter();
+		$(".content").each(function(index,value){
+			var contentHtml = $(value).html();
+			contentHtml = contentHtml.replace(/&amp;/g,"&");
+			contentHtml = contentHtml.replace(/&lt;/g,"<");
+			contentHtml = contentHtml.replace(/&gt;/g,">");
+			contentHtml = contentHtml.replace(/&quot;/g,"\"");
+			$(value).html(converter.makeHtml(contentHtml));
+		});
+		$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+		$(".deletePost").bind("click", 
+			function() {
+				$.ajax({
+	        		type:"DELETE",
+	        		url:this.href,
+	        		complete:function(data) {
+	            		location.href ="/";
+	        		}
+	    		});
+	    		return false;
+			}
+		);
+	});
+	
+</script>

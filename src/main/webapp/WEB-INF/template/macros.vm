@@ -1,0 +1,60 @@
+#macro(page $prefix $page)
+    #set($outSize=3)
+    #set($inSize=3)
+	#set($pageSize=$page.totalPages)
+	#set($pageSizeM=$pageSize - $outSize)
+	#if($pageSize!=0&&$pageSize!=1)
+		#set($pageSeq=[1..$pageSize])
+		#set($pageNumber=$page.number + 1)	
+		<ul class="pagination">
+		    #foreach($i in $pageSeq)
+				#if($i<=$outSize)
+					#if($pageNumber==$i)
+						<li class="active"><a href="#">$i</a></li>
+					#else
+						<li><a href="$!prefix/page/$i">$i</a></li>
+					#end
+		            #if($i==$outSize)
+		                #set($fSize=$outSize + $inSize + 1)
+		                #if($pageNumber>$fSize)
+		                    <li><a href="#">...</a></li>
+		                #end
+		            #end
+				#end
+				#if($i>$outSize&&$i<=$pageSizeM)
+					#set($fi=$i - $inSize)
+					#set($bi=$i + $inSize)
+					#if($fi<=$pageNumber&&$bi>=$pageNumber)
+						#if($pageNumber==$i)
+							<li class="active"><a href="#">$i</a></li>
+						#else
+							<li><a href="$!prefix/page/$i">$i</a></li>
+						#end
+					#end
+					#if($i==$pageSizeM)
+		                #set($bSize=$pageSizeM - $inSize)
+		                #if($pageNumber<$bSize)
+		                    <li class="disabled"><a href="#">...</a></li>
+		                #end
+					#end
+				#end
+				#if($i>$pageSizeM&&$i>$outSize)
+					#if($pageNumber==$i)
+						<li class="active"><a href="#">$i</a></li>
+					#else
+						<li><a href="$!prefix/page/$i">$i</a></li>
+					#end
+				#end
+			#end
+		</ul>
+	#end
+#end
+
+#macro(limit $content $number)
+	#set($end=$content.length() - 1)
+	#if($end>$number)
+		#set($end=$number)
+	#end
+	#set($content=$content.substring(0,$end))
+	$content
+#end

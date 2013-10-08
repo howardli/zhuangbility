@@ -1,0 +1,19 @@
+#parse("post/_show.vm")
+<br/>
+<a name="comment"></a>
+#if($commentPage.totalPages==0)
+	<h2>还没有人评论，你当第一个吧</h2>
+#else
+	<h2>评论：</h2>
+#end
+<br/>
+#foreach($comment in $commentPage.content)
+	#parse("comment/_show.vm")
+#end
+#set($pagePrefix="/post/"+$post.id+"/comment")
+#page($pagePrefix, $!commentPage)
+<form action="/post/$!post.id/comment" method="post" class="form-horizontal">
+	#parse("comment/_form.vm")
+</form>
+#parse("js/post/_show.vm")
+#parse("js/comment/_show.vm")

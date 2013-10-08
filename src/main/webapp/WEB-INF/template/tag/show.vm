@@ -1,0 +1,7 @@
+标签：<a class="btn btn-default" href="/tag/$!tag.name">$!tag.name</a>
+#foreach($postTag in $postTagPage.content)
+	#set($post=$postTag.id.post)
+	#parse("post/_show.vm")
+#end
+#page("/tag/$!tag.name", $!postTagPage)
+#parse("js/post/_show.vm")

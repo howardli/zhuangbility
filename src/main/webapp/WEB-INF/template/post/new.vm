@@ -1,0 +1,3 @@
+<form id="inputForm" action="/post" method="post" class="form-horizontal">
+	#parse("post/_form.vm")
+</form>

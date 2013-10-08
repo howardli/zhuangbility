@@ -1,0 +1,24 @@
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$(".replyComment").bind("click", 
+			function() {
+				$("#replyCommentId").val($(this).attr("replyCommentId"));
+	    		return true;
+			}
+		);
+		$(".deleteComment").bind("click", 
+			function() {
+				$.ajax({
+	        		type:"DELETE",
+	        		url:this.href,
+	        		complete:function(data) {
+	            		location.href ="/post/$post.id";
+	        		}
+	    		});
+	    		return false;
+			}
+		);
+	});
+
+</script>

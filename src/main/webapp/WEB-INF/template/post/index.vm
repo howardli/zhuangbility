@@ -1,0 +1,5 @@
+#foreach($post in $postPage.content)
+	#parse("post/_show.vm")
+#end
+#page("", $!postPage)
+#parse("js/post/_show.vm")

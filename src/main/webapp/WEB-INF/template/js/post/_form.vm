@@ -1,0 +1,5 @@
+<script type="text/javascript">
+	$('#myModal').on('hidden.bs.modal', function () {
+
+	})
+</script>
