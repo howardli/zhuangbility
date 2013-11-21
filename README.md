@@ -1,4 +1,4 @@
 zhuangbility
 =================
 
-HowardLi's Blog(Java Version)
+Simple Blog(Java Version)
